@@ -1,0 +1,35 @@
+extends layout
+
+block content
+	section.hero.is-fullheight.is-dark.is-bold
+		.hero-body
+			.container
+				.columns.is-vcentered
+					.column.is-4.is-offset-4
+						h1.title
+							| Register an Account
+						.box
+							label.label Name
+							p.control
+								input.input(type='text', placeholder='John Smith')
+							label.label Username
+							p.control
+								input.input(type='text', placeholder='jsmith')
+							label.label Email
+							p.control
+								input.input(type='text', placeholder='jsmith@example.org')
+							hr
+							label.label Password
+							p.control
+								input.input(type='password', placeholder='●●●●●●●')
+							label.label Confirm Password
+							p.control
+								input.input(type='password', placeholder='●●●●●●●')
+							hr
+							p.control
+								button.button.is-primary Register
+								button.button.is-default Cancel
+						p.has-text-centered
+							a(href='login.html') Login
+							|  |
+							a(href='#') Need help?

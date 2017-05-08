@@ -1,0 +1,25 @@
+doctype html
+html
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel='stylesheet', href='/stylesheets/bulma.css')
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+
+	body
+		nav.nav.has-shadow
+			.container
+				a.nav-item(href='/')
+					img(src='http://bulma.io/images/bulma-logo.png', alt='Bulma logo')
+				|
+				a.nav-item
+					.field
+						p.control.searchbar
+							form(method='GET' action='/result')
+								input.input(type='text', placeholder='Go Shop')
+				a.nav-item(href='/result')
+					i.fa.fa-search(aria-hidden='true')
+				.nav-right.nav-menu
+				a.nav-item.is-tab(href='/login') Log In
+				a.nav-item.is-tab(href='/signup') Sign Up
+		block content

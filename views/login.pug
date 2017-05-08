@@ -1,0 +1,28 @@
+extends layout
+
+block content
+	.container
+		.login-wrapper.columns
+			.column.is-half.is-offset-one-quarter
+				section.hero.is-fullheight
+					.hero-body
+						.container
+							.columns
+								.column.is-8.is-offset-2
+									h1.avatar.has-text-centered.section
+										img(src='/images/login-logo.png')
+									.login-form
+										p.control.has-icon.has-icon-right
+											input.input.email-input(type='text', placeholder='jsmith@example.org')
+											span.icon.user
+												i.fa.fa-user
+										p.control.has-icon.has-icon-right
+											input.input.password-input(type='password', placeholder='●●●●●●●')
+											span.icon.user
+												i.fa.fa-lock
+										p.control.login
+											button.button.is-success.is-outlined.is-large.is-fullwidth Login
+									.section.forgot-password
+										p.has-text-centered
+											a(href='#') Forgot password
+											a(href='#') Need help?
