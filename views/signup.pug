@@ -1,7 +1,7 @@
 extends layout
 
 block content
-	section.hero.is-fullheight.is-dark.is-bold
+	section.hero.is-fullheight.is-bold
 		.hero-body
 			.container
 				.columns.is-vcentered
@@ -9,27 +9,31 @@ block content
 						h1.title
 							| Register an Account
 						.box
-							label.label Name
-							p.control
-								input.input(type='text', placeholder='John Smith')
-							label.label Username
-							p.control
-								input.input(type='text', placeholder='jsmith')
-							label.label Email
-							p.control
-								input.input(type='text', placeholder='jsmith@example.org')
-							hr
-							label.label Password
-							p.control
-								input.input(type='password', placeholder='●●●●●●●')
-							label.label Confirm Password
-							p.control
-								input.input(type='password', placeholder='●●●●●●●')
-							hr
-							p.control
-								button.button.is-primary Register
-								button.button.is-default Cancel
+							form(method='POST', action='/signup')
+								label.label Username
+								p.control
+									input.input(name='username', type='text', placeholder='')
+								label.label Firstname
+								p.control
+									input.input(name='firstname', type='text', placeholder='')
+								label.label Lastname
+								p.control
+									input.input(name='lastname', type='text', placeholder='')
+								label.label Email
+								p.control
+									input.input(type='text', placeholder='')
+								hr
+								label.label Password
+								p.control
+									input.input(type='password', placeholder='')
+								label.label Confirm Password
+								p.control
+									input.input(type='password', placeholder='')
+								hr
+								p.control
+									button.button.is-primary(type='submit') Register
+									button.button.is-default Cancel
 						p.has-text-centered
-							a(href='login.html') Login
+							a(href='') Login
 							|  |
 							a(href='#') Need help?

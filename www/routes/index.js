@@ -1,6 +1,6 @@
 class ApplicationRoutesInit {
 
-	static init(app) {
+	static init(app, passport) {
 
 		app.get('/', (req, res) => {
 			res.render('index', { title: 'Phuc' });
@@ -12,11 +12,45 @@ class ApplicationRoutesInit {
 		const User = require('./views/users');
 		app.use('/user', User);
 
-		const Login = require('./views/login');
-		app.use('/login', Login);
+		// const Login = require('./views/login');
+		// app.use('/login', Login);
 
-		const Signup = require('./views/signup');
-		app.use('/signup', Signup);
+		// const Signup = require('./views/signup');
+		// app.use('/signup', Signup);
+
+		app.use('/login',
+			(req, res) => {
+				res.render('login', { env: process.env });
+			});
+
+		// Perform session logout and redirect to homepage
+		app.use('/logout', (req, res) => {
+			req.logout();
+			res.redirect('/');
+		});
+
+		// Perform the final stage of authentication and redirect to '/user'
+		app.use('/callback',
+			passport.authenticate('auth0', { failureRedirect: '/url-if-something-fails' }),
+			(req, res) => {
+				res.redirect(req.session.returnTo || '/user');
+			});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 		// catch 404 and forward to error handler
 		app.use((req, res, next) => {

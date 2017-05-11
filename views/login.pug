@@ -1,28 +1,43 @@
 extends layout
 
 block content
-	.container
-		.login-wrapper.columns
-			.column.is-half.is-offset-one-quarter
-				section.hero.is-fullheight
-					.hero-body
-						.container
-							.columns
-								.column.is-8.is-offset-2
-									h1.avatar.has-text-centered.section
-										img(src='/images/login-logo.png')
-									.login-form
-										p.control.has-icon.has-icon-right
-											input.input.email-input(type='text', placeholder='jsmith@example.org')
-											span.icon.user
-												i.fa.fa-user
-										p.control.has-icon.has-icon-right
-											input.input.password-input(type='password', placeholder='●●●●●●●')
-											span.icon.user
-												i.fa.fa-lock
-										p.control.login
-											button.button.is-success.is-outlined.is-large.is-fullwidth Login
-									.section.forgot-password
-										p.has-text-centered
-											a(href='#') Forgot password
-											a(href='#') Need help?
+	div(id="root" style="width: 280px; margin: 40px auto; padding: 10px;")
+
+	script.
+		// Construct an instance of Auth0Lock with your clientId and aut0 domain name
+		var lock = new Auth0Lock('#{env.AUTH0_CLIENT_ID}', '#{env.AUTH0_DOMAIN}',{ auth: {
+				redirectUrl: '#{env.AUTH0_CALLBACK_URL}'
+			, responseType: 'code'
+			, params: {
+				scope: 'openid name email picture'
+			}
+			}});
+
+		// Show lock's login widget
+		lock.show();
+
+	//- .container
+	//- 	.login-wrapper.columns
+	//- 		.column.is-half.is-offset-one-quarter
+	//- 			section.hero.is-fullheight
+	//- 				.hero-body
+	//- 					.container
+	//- 						.columns
+	//- 							.column.is-8.is-offset-2
+	//- 								h1.avatar.has-text-centered.section
+	//- 									img(src='/images/login-logo.png')
+	//- 								.login-form
+	//- 									p.control.has-icon.has-icon-right
+	//- 										input.input.email-input(type='text', placeholder='jsmith@example.org')
+	//- 										span.icon.user
+	//- 											i.fa.fa-user
+	//- 									p.control.has-icon.has-icon-right
+	//- 										input.input.password-input(type='password', placeholder='●●●●●●●')
+	//- 										span.icon.user
+	//- 											i.fa.fa-lock
+	//- 									p.control.login
+	//- 										button.button.is-success.is-outlined.is-large.is-fullwidth Login
+	//- 								.section.forgot-password
+	//- 									p.has-text-centered
+	//- 										a(href='#') Forgot password
+	//- 										a(href='#') Need help?
